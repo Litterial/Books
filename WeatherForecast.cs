@@ -1,6 +1,6 @@
 using System;
 
-namespace Books
+namespace BookApp
 {
     public class WeatherForecast
     {
