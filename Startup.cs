@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using BookApp.Data;
 using Microsoft.EntityFrameworkCore;
 using BookApp.Interface;
-using BookApp.Mocks;
+//using BookApp.Mocks;
 
 namespace BookApp
 {
@@ -26,8 +26,8 @@ namespace BookApp
         {
 
             services.AddControllersWithViews();
-            services.AddScoped < ILibraryDistrict,SouthLibrary>();
-            services.AddScoped<ILibraryDistrict, NorthLibrary>();
+            //services.AddScoped <ILibraryDistrict,SouthLibrary>();
+            //services.AddScoped<ILibraryDistrict, NorthLibrary>();
 
 
             // In production, the React files will be served from this directory

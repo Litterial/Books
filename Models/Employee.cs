@@ -12,6 +12,5 @@ namespace BookApp.Models
         public uint Salary{ get; set; }
 
         public int LibraryId { get; set; }
-        public Library Library { get; set; }
     }
 }

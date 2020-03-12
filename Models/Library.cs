@@ -10,7 +10,6 @@ namespace BookApp.Models
         }
         public int LibraryId { get; set; }
         public string Name { get; set; }
-        public List<Employee> employees { get; set; }
 
     }
 }
