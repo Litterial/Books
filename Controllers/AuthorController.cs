@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookApp.Controllers
 {
-   
+
     [Route("[controller]")]
     [ApiController]
     public class AuthorsController : ControllerBase
@@ -50,19 +50,30 @@ namespace BookApp.Controllers
             return Ok(author);
         }
 
-       
+
 
         [HttpPost("create")]
-        [ValidateAntiForgeryToken]
-
-        public async Task <IActionResult> Create([FromBody]Author author)
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([FromBody]Author author)
         {
             if (!ModelState.IsValid)
-                return NotFound();
+                return Conflict(author);
 
-             _context.Authors.Add(author);
-             await _context.Authors.SaveChangesAysnc();
+            _context.Authors.Add(author);
+            await _context.SaveChangesAsync();
             return Ok(author);
+        }
+
+        [HttpPut("{id}")]
+
+        public async Task<IActionResult> UpdateAuthor(int id,[FromBody] Author author)
+        {
+            Author changeAuthor = await _context.Authors.FindAsync(id);
+                if (changeAuthor == null)
+                    return NotFound("Author not found");
+            changeAuthor.Name = author.Name;
+            await _context.SaveChangesAsync();
+            return Ok(changeAuthor);
         }
 
     }
